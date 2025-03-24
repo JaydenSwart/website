@@ -1,0 +1,497 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif; /* A more elegant font */
+    background-color: #0d261d; /* Deep green background */
+    color: #e0e0e0; /* Subtle light gray text */
+    height: 100vh; /* Ensure body fills the viewport */
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://www.transparenttextures.com/patterns/green-fibers.png'); /* Textured background */
+}
+
+header {
+    background-color: #1a3a2a; /* Slightly lighter green */
+    color: #a8d5ba; /* Soft green text for the title */
+    text-align: center;
+    padding: 10px 0; /* Reduced padding */
+    font-size: 2rem; /* Smaller font size */
+    font-weight: bold;
+    border-bottom: 2px solid #a8d5ba; /* Soft green margin line */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px; /* Lower the header by 10 pixels */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Adjusted font size for the title */
+}
+
+main {
+    padding: 20px;
+}
+
+.chat-container {
+    display: flex;
+    flex: 1; /* Take up remaining space below the header */
+    overflow: hidden; /* Prevent scrolling on the main screen */
+}
+
+.chat-sidebar {
+    width: 20%;
+    background-color: #1a3a2a; /* Slightly lighter green */
+    color: #e0e0e0; /* Subtle light gray text */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+
+.chat-sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #d4af37; /* Gold for headings */
+}
+
+.chat-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.chat-sidebar li {
+    margin: 10px 0;
+    cursor: pointer;
+    color: #0d261d; /* Deep green text */
+    background-color: #a8d5ba; /* Soft green background */
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0px 4px 8px rgba(168, 213, 186, 0.5); /* Green shadow */
+    font-weight: bold;
+    text-align: center;
+}
+
+.chat-sidebar li:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #8bbf9e; /* Slightly darker soft green */
+}
+
+.chat-sidebar li::before {
+    content: ''; /* Remove the '#' symbol */
+}
+
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d0d0d; /* Deep black background */
+    height: 100%; /* Ensure it fills the remaining space */
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    overflow-y: auto; /* Allow scrolling for messages */
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box; /* Include padding in height calculations */
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message .username {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    color: #d4af37; /* Gold for usernames */
+}
+
+.message.me {
+    align-self: flex-end;
+    background-color: #1a1a1a; /* Slightly lighter black */
+    color: #e0e0e0;
+}
+
+.message.other {
+    align-self: flex-start;
+    background-color: #2e2e2e; /* Dark gray for others */
+    color: #e0e0e0;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #1a3a2a; /* Slightly lighter green */
+    border-top: 2px solid #a8d5ba; /* Soft green border */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #0d0d0d; /* Deep black */
+    color: #e0e0e0;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    background-color: #a8d5ba; /* Soft green button */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0d261d; /* Deep green text */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #8bbf9e; /* Slightly darker soft green */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: #d4af37; /* Gold button */
+    color: #0d0d0d; /* Deep black text */
+    padding: 6px 12px; /* Reduced padding */
+    font-size: 0.9rem; /* Smaller font size */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0px 4px 8px rgba(212, 175, 55, 0.5); /* Gold shadow */
+}
+
+.dropdown-button:hover {
+    background-color: #b8860b; /* Slightly darker gold */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a; /* Slightly lighter black */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0; /* Align dropdown to the right */
+}
+
+.dropdown-content a {
+    color: #0d0d0d; /* Deep black text */
+    background-color: #d4af37; /* Gold background */
+    padding: 8px 10px; /* Reduced padding */
+    font-size: 0.85rem; /* Smaller font size */
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    margin: 3px 0; /* Reduced margin */
+    box-shadow: 0px 4px 8px rgba(212, 175, 55, 0.5); /* Gold shadow */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-content a:hover {
+    background-color: #b8860b; /* Slightly darker gold */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-button {
+    background-color: #b8860b; /* Slightly darker gold on hover */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden by default */
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #a8d5ba; /* Soft green */
+    margin-left: 10px;
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+/* Sidebar Popup */
+.popup-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden off-screen */
+    width: 70%; /* Sidebar width */
+    height: 100%;
+    background-color: #1a3a2a; /* Slightly lighter green */
+    color: #e0e0e0; /* Subtle light gray text */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: left 0.3s ease; /* Smooth slide-in effect */
+    z-index: 1000;
+    padding: 20px;
+}
+
+.popup-sidebar.active {
+    left: 0; /* Slide in from the left */
+}
+
+.popup-sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #d4af37; /* Gold for headings */
+}
+
+.popup-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-sidebar li {
+    margin: 10px 0;
+    cursor: pointer;
+    color: #0d261d; /* Deep green text */
+    background-color: #a8d5ba; /* Soft green background */
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0px 4px 8px rgba(168, 213, 186, 0.5); /* Green shadow */
+    font-weight: bold;
+    text-align: center;
+}
+
+.popup-sidebar li:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #8bbf9e; /* Slightly darker soft green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    .chat-sidebar {
+        width: 100%; /* Full width for mobile */
+        height: auto; /* Adjust height */
+        box-shadow: none; /* Remove shadow for mobile */
+    }
+
+    .chat-main {
+        flex: 1;
+        height: auto; /* Adjust height for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.8rem; /* Smaller font for mobile */
+        padding: 15px 0;
+    }
+
+    .chat-sidebar h2 {
+        font-size: 1.2rem; /* Adjust sidebar heading size */
+    }
+
+    .chat-sidebar li {
+        font-size: 0.9rem; /* Adjust channel font size */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .chat-input input {
+        font-size: 0.9rem; /* Adjust input font size */
+    }
+
+    .chat-input button {
+        font-size: 0.9rem; /* Adjust button font size */
+        padding: 8px 15px; /* Adjust padding */
+    }
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0d261d; /* Deep green background */
+}
+
+.auth-form {
+    background-color: #1a3a2a; /* Slightly lighter green */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    color: #e0e0e0;
+    font-family: 'Georgia', serif;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #a8d5ba; /* Soft green text */
+    margin-bottom: 10px;
+}
+
+.auth-form p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #a8d5ba; /* Soft green text */
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0d0d0d; /* Deep black */
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.auth-form input::placeholder {
+    color: #a8d5ba; /* Soft green placeholder text */
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #a8d5ba; /* Soft green button */
+    border: none;
+    border-radius: 5px;
+    color: #0d261d; /* Deep green text */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-form button:hover {
+    background-color: #8bbf9e; /* Slightly darker soft green */
+}
+
+.alias-note {
+    font-size: 0.9rem;
+    color: #d4af37; /* Gold text for the alias note */
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+/* Mobile-Specific Styles */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5rem; /* Smaller font size for mobile */
+        padding: 8px 10px; /* Reduced padding */
+        flex-direction: row; /* Keep title and menu in a row */
+        justify-content: space-between;
+    }
+
+    header h1 {
+        font-size: 1.4rem; /* Adjusted font size for the title */
+        margin: 0;
+    }
+
+    .dropdown-button {
+        display: none; /* Hide the dropdown button on mobile */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    .chat-container {
+        flex-direction: column; /* Stack sidebar and chat vertically */
+    }
+
+    .chat-sidebar {
+        width: 100%; /* Full width for mobile */
+        height: auto; /* Adjust height */
+        padding: 10px; /* Reduced padding */
+        box-shadow: none; /* Remove shadow for mobile */
+    }
+
+    .chat-sidebar h2 {
+        font-size: 1.2rem; /* Adjust sidebar heading size */
+    }
+
+    .chat-sidebar li {
+        font-size: 0.85rem; /* Adjust channel font size */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .chat-main {
+        flex: 1;
+        height: auto; /* Adjust height for mobile */
+        padding: 10px; /* Add padding for better spacing */
+    }
+
+    .chat-input {
+        padding: 8px; /* Adjust padding for mobile */
+    }
+
+    .chat-input input {
+        font-size: 0.9rem; /* Adjust input font size */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .chat-input button {
+        font-size: 0.9rem; /* Adjust button font size */
+        padding: 8px 12px; /* Adjust padding */
+    }
+
+    .auth-container {
+        padding: 10px; /* Add padding for mobile */
+    }
+
+    .auth-form {
+        padding: 15px; /* Adjust padding for mobile */
+    }
+
+    .auth-form h2 {
+        font-size: 1.2rem; /* Adjust heading size */
+    }
+
+    .auth-form input {
+        font-size: 0.9rem; /* Adjust input font size */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .auth-form button {
+        font-size: 0.9rem; /* Adjust button font size */
+        padding: 8px 12px; /* Adjust padding */
+    }
+}

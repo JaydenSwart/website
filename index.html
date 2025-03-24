@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTS Off The Record</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>HTS Off The Record</h1>
+        <button class="hamburger" id="hamburgerMenu">☰</button>
+        <div class="dropdown">
+            <button class="dropdown-button">Navigate</button>
+            <div class="dropdown-content">
+                <a href="chat.html">Group Chat</a>
+                <a href="auth.html">Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+    <div class="popup-sidebar" id="popupSidebar">
+        <h2>Channels</h2>
+        <ul>
+            <li><a href="general.html" style="color: inherit; text-decoration: none;">General</a></li>
+            <li><a href="random.html" style="color: inherit; text-decoration: none;">Random</a></li>
+            <li><a href="help.html" style="color: inherit; text-decoration: none;">Help</a></li>
+        </ul>
+        <a href="index.html" style="color: #d4af37; text-decoration: none; display: block; margin-top: 20px;">Back to Home</a>
+    </div>
+    <main>
+        <p>Welcome to HTS Off The Record!</p>
+    </main>
+    <script>
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const popupSidebar = document.getElementById('popupSidebar');
+
+        hamburgerMenu.addEventListener('click', () => {
+            popupSidebar.classList.toggle('active'); // Toggle the sidebar visibility
+        });
+    </script>
+</body>
+</html>
